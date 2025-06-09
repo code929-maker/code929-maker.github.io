@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratoZen - Virtual Professional Networking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #6366f1;
+            margin: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        .cta-button {
+            background: #6366f1;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #5855eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #6366f1;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #6366f1;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #6366f1;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* Services */
+        .services {
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .service-content p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .learn-more {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .testimonials-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #475569;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .slider-btn:hover {
+            background: #5855eb;
+            transform: scale(1.1);
+        }
+
+        .slider-btn:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: #6366f1;
+            transform: scale(1.2);
+        }
+
+        /* Partners */
+        .partners {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .partner-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #64748b;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .partner-logo:hover {
+            opacity: 1;
+        }
+
+        /* Resources */
+        .resources {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        /* Community */
+        .community {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .community h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .community p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1.5rem 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #1e293b;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: #6366f1;
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: #64748b;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: #64748b;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin: 1rem 0;
+                gap: 1rem;
+            }
+            
+            .logo {
+                margin: 1rem 0;
+            }
+            
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#professionals">Professionals</a></li>
+            </ul>
+            <div class="logo">StratoZen</div>
+            <ul class="nav-links">
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#join" class="cta-button">Join Network</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <p style="font-size: 1rem; margin-bottom: 1rem; opacity: 0.8;">HOW IT WORKS</p>
+            <h1>Elevate Your Professional Network</h1>
+            <p>Connect with industry leaders, entrepreneurs, and professionals to accelerate your career growth.</p>
+            <div class="hero-buttons">
+                <a href="#join" class="btn-primary">Join StratoZen</a>
+                <a href="#learn" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>We Help You Build Meaningful Professional Connections</h2>
+                <p>Browse professionals, schedule networking sessions, and expand your business network with trusted industry experts.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Find A Professional</h3>
+                    <p>Connect with industry leaders and professionals across various sectors.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Business Development</h3>
+                    <p>Strategic networking sessions and partnership opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Get Started</h3>
+                    <p>Join our virtual networking rooms and start building valuable connections today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Path to Professional Success</h2>
+                <p>Discover expert networking opportunities for accelerated business growth and career advancement.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">🎯</div>
+                    <div class="service-content">
+                        <h3>Executive Networking</h3>
+                        <p>Connect with C-level executives, board members, and senior leaders. Build strategic relationships that drive business growth and open doors to new opportunities in your industry.</p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">💡</div>
+                    <div class="service-content">
+                        <h3>One-on-One Mentoring</h3>
+                        <p>Virtual and in-person mentoring sessions with industry professionals.</p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">🌐</div>
+                    <div class="service-content">
+                        <h3>Industry Meetups</h3>
+                        <p>Join sector-specific networking events and professional gatherings.</p>
+                        <a href="#" class="learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Members Are Saying</h2>
+                <p>Success stories from professionals who have expanded their networks and accelerated their careers.</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonials-grid" id="testimonialsGrid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"StratoZen made it incredibly easy to connect with the right industry leaders. The networking sessions have truly transformed my business approach, and I've secured three major partnerships this quarter!"</p>
+                        <p class="testimonial-author">- Sarah Chen, CEO</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"I was struggling to expand my professional network, but the mentoring program at StratoZen helped me connect with senior executives. I finally feel confident about my career trajectory."</p>
+                        <p class="testimonial-author">- Michael Rodriguez, Director</p>
+                    </div>
+                    <div class="testimonial-card" style="display: none;">
+                        <div class="testimonial-rating">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"The virtual networking rooms are fantastic! I've connected with professionals from around the world and learned so much about different industries. StratoZen has opened doors I never knew existed."</p>
+                        <p class="testimonial-author">- Jennifer Park, Marketing Manager</p>
+                    </div>
+                    <div class="testimonial-card" style="display: none;">
+                        <div class="testimonial-rating">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"As a startup founder, finding the right mentors was crucial. StratoZen connected me with experienced entrepreneurs who provided invaluable guidance. My company has grown 300% since joining!"</p>
+                        <p class="testimonial-author">- David Kim, Startup Founder</p>
+                    </div>
+                    <div class="testimonial-card" style="display: none;">
+                        <div class="testimonial-rating">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"The quality of professionals on StratoZen is exceptional. Every conversation has been meaningful and has led to real business opportunities. It's not just networking, it's relationship building."</p>
+                        <p class="testimonial-author">- Amanda Foster, Business Consultant</p>
+                    </div>
+                    <div class="testimonial-card" style="display: none;">
+                        <div class="testimonial-rating">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"I love how easy it is to find professionals in my specific industry. The platform's matching algorithm is spot-on, and I've made connections that have directly impacted my career growth."</p>
+                        <p class="testimonial-author">- Robert Thompson, Tech Executive</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevBtn">‹</button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button class="slider-btn" id="nextBtn">›</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Partners</h2>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-logo">TechCorp</div>
+                <div class="partner-logo">InnovateHub</div>
+                <div class="partner-logo">BusinessPro</div>
+                <div class="partner-logo">NetworkPlus</div>
+                <div class="partner-logo">ConnectGlobal</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resources for Your Professional Growth</h2>
+                <p>Explore expert insights, networking guides, and tools to support your career advancement.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Articles & Guides</h3>
+                    <p>Practical tips on networking strategies, business development, and professional growth.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3>Podcasts & Interviews</h3>
+                    <p>Audio sessions with industry leaders sharing insights and success stories.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎥</div>
+                    <h3>Webinars & Workshops</h3>
+                    <p>Live and recorded sessions with business professionals and industry experts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section class="community">
+        <div class="container">
+            <h2>You're Not Alone on This Journey</h2>
+            <p>Connect with like-minded professionals, share experiences, and find opportunities in a supportive business environment.</p>
+            <a href="#" class="btn-primary">Join The Community</a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our networking services, virtual rooms, and professional connections.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I schedule a networking session?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply browse our professional directory, select the person you'd like to connect with, and book a time slot that works for both of you through our integrated calendar system.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Are virtual networking rooms available?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Our virtual networking rooms are available 24/7, allowing you to connect with professionals from around the world at your convenience.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>What's the difference between networking and mentoring?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Networking focuses on building mutual professional relationships, while mentoring involves one-on-one guidance from experienced professionals to help advance your career.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do I need a subscription to access services?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer both free and premium membership tiers. Basic networking features are free, while advanced features like priority booking and exclusive events require a premium subscription.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Can I switch networking groups if I don't find the right fit?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can join multiple networking groups and switch between them based on your interests and professional goals.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Is my information and networking history kept confidential?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we maintain strict confidentiality standards. Your personal information and networking activities are protected and only shared with your explicit consent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>We're Here to Support You</h2>
+                <p>Whether you have questions, need help getting started, or want to learn more - reach out anytime.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                    <p style="margin-top: 1rem; color: #64748b; font-size: 0.9rem;">We typically respond within 12 hours.</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Details:</h3>
+                    <p><strong>Email:</strong> support@stratozen.com</p>
+                    <p><strong>Phone:</strong> +254-790-878-649</p>
+                    <p><strong>Address:</strong> 101 Odeon plaza, Nairobi city,</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>StratoZen</h3>
+                    <p>Connect, Network, and Grow Your Professional Success.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#professionals">Professionals</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms Of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StratoZen. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Testimonials Slider
+        class TestimonialsSlider {
+            constructor() {
+                this.currentSlide = 0;
+                this.testimonials = document.querySelectorAll('.testimonial-card');
+                this.totalSlides = Math.ceil(this.testimonials.length / 2); // Show 2 testimonials at a time
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.dotsContainer = document.getElementById('sliderDots');
+                
+                this.init();
+            }
+
+            init() {
+                this.createDots();
+                this.updateSlider();
+                this.bindEvents();
+                this.startAutoSlide();
+            }
+
+            createDots() {
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'slider-dot';
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            updateSlider() {
+                // Hide all testimonials
+                this.testimonials.forEach(testimonial => {
+                    testimonial.style.display = 'none';
+                });
+
+                // Show current pair of testimonials
+                const startIndex = this.currentSlide * 2;
+                const endIndex = Math.min(startIndex + 2, this.testimonials.length);
+                
+                for (let i = startIndex; i < endIndex; i++) {
+                    this.testimonials[i].style.display = 'block';
+                }
+
+                // Update dots
+                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+
+                // Update button states
+                this.prevBtn.disabled = this.currentSlide === 0;
+                this.nextBtn.disabled = this.currentSlide === this.totalSlides - 1;
+            }
+
+            goToSlide(slideIndex) {
+                this.currentSlide = slideIndex;
+                this.updateSlider();
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides - 1) {
+                    this.currentSlide++;
+                } else {
+                    this.currentSlide = 0; // Loop back to first slide
+                }
+                this.updateSlider();
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 0) {
+                    this.currentSlide--;
+                } else {
+                    this.currentSlide = this.totalSlides - 1; // Loop to last slide
+                }
+                this.updateSlider();
+            }
+
+            bindEvents() {
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+            }
+
+            startAutoSlide() {
+                setInterval(() => {
+                    this.nextSlide();
+                }, 5000); // Auto-slide every 5 seconds
+            }
+        }
+
+        // FAQ Toggle Functionality
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span:last-child');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-answer').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question span:last-child').forEach(item => {
+                    item.textContent = '+';
+                });
+                
+                // Open current FAQ item
+                answer.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission with enhanced feedback
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Sending...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! We\'ll get back to you within 12 hours.');
+                this.reset();
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 1000);
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Initialize slider when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            new TestimonialsSlider();
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
